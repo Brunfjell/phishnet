@@ -1,3 +1,4 @@
+*PROJECT STRUCTURE*
 /phishnet
 ├─ /public
 │  └─ favicon.ico
@@ -54,4 +55,16 @@
 ├─ index.html
 ├─ package.json
 └─ vite.config.js
-    
+
+INSTRUCTIONS
+IF DOWNLOADING, DO 
+npm i 
+FIRST TO INSTALL ALL DEPENDENCIES
+
+THEN CREATE A 
+.env.local
+AT THE ROOT OF THE FOLDER
+
+THEN PASTE THIS AS THE CONTENT
+VITE_SUPABASE_URL=https://gvuqenkdtvetefytqqlo.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd2dXFlbmtkdHZldGVmeXRxcWxvIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1ODg0NDYwNiwiZXhwIjoyMDc0NDIwNjA2fQ._ucpfXmBg62Ky-Ynz42z7cDiKCoDJXYGCY9irXH1QoY
