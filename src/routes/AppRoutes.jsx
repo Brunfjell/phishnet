@@ -12,14 +12,14 @@ import ResetPassword from "../pages/auth/ResetPassword";
 import Dashboard from "../pages/Dashboard";
 import Campaigns from "../pages/Campaigns";
 import Templates from "../pages/Templates";
-import Employee from "../pages/Employees";
+import Employees from "../pages/Employees";
 import Quiz from "../pages/Quiz";
 
 export default function AppRoutes() {
   const { user } = useAuthStore();
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/phishnet">
       <Routes>
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
@@ -30,17 +30,26 @@ export default function AppRoutes() {
 
         <Route
           path="/"
-          element={user ? <MainLayout /> : <Navigate to="/auth/login" />}
+          element={user ? <MainLayout /> : <Navigate to="/auth/login" replace />}
         >
-          <Route index element={<Dashboard />} />
+          <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="campaigns" element={<Campaigns />} />
           <Route path="templates" element={<Templates />} />
-          <Route path="employee" element={<Employee />} />
+          <Route path="employees" element={<Employees />} />
           <Route path="quiz" element={<Quiz />} />
         </Route>
 
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route
+          path="*"
+          element={
+            user ? (
+              <Navigate to="/dashboard" replace />
+            ) : (
+              <Navigate to="/auth/login" replace />
+            )
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

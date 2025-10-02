@@ -11,11 +11,15 @@ export default function Navbar() {
   const handleLogout = async () => {
     await signOut();
     logout();
-    navigate("/login");
+    navigate("/auth/login"); 
   };
 
-  const isActive = (path) =>
-    location.pathname === path ? "active text-white bg-primary font-semibold" : "";
+  const isActive = (path) => {
+    const current = location.pathname.replace(/^\/phishnet/, "");
+    return current.startsWith(path)
+      ? "active text-white bg-primary font-semibold"
+      : "";
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -57,7 +61,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/employee" className={isActive("/employee")}>
+              <Link to="/employees" className={isActive("/employees")}>
                 Employees
               </Link>
             </li>
@@ -80,7 +84,7 @@ export default function Navbar() {
         >
           Ph
           <img
-            src="/phishnet.png"
+            src="/phishnet/phishnet.png"
             alt="i"
             className="inline-block w-4.5 h-5 align-middle mx-[-2px]"
           />
@@ -106,7 +110,7 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/employee" className={isActive("/employee")}>
+            <Link to="/employees" className={isActive("/employees")}>
               Employees
             </Link>
           </li>
@@ -114,7 +118,7 @@ export default function Navbar() {
             <Link to="/quiz" className={isActive("/quiz")}>
               Quiz
             </Link>
-          </li>          
+          </li>
         </ul>
       </div>
 
@@ -123,7 +127,7 @@ export default function Navbar() {
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
               <img
-                src={user?.avatar || "/avatar.png"}
+                src={user?.avatar || "/phishnet/avatar.png"}
                 alt="User Avatar"
                 className="shadow-md"
               />
@@ -137,7 +141,7 @@ export default function Navbar() {
               <button className="flex justify-between items-center w-full">
                 <span>Theme</span>
                 <ThemeToggle />
-              </button> 
+              </button>
             </li>
             {user && (
               <li>
