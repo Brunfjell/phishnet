@@ -11,8 +11,9 @@ import ResetPassword from "../pages/auth/ResetPassword";
 
 import Dashboard from "../pages/Dashboard";
 import Campaigns from "../pages/Campaigns";
-import Simulations from "../pages/Simulations";
+import Templates from "../pages/Templates";
 import Employee from "../pages/Employees";
+import Quiz from "../pages/Quiz";
 
 export default function AppRoutes() {
   const { user } = useAuthStore();
@@ -34,8 +35,9 @@ export default function AppRoutes() {
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="campaigns" element={<Campaigns />} />
-          <Route path="simulations" element={<Simulations />} />
+          <Route path="templates" element={<Templates />} />
           <Route path="employee" element={<Employee />} />
+          <Route path="quiz" element={<Quiz />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
